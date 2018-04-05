@@ -36,11 +36,13 @@ class ScoreScreen extends Component {
 
   render() {
     return (
-      <ScrollView>
-        <Container>
-          {this.renderScoreBoards()}
-        </Container>
-      </ScrollView>
+      <Container>
+        <ScrollView>
+          <Container>
+            {this.renderScoreBoards()}
+          </Container>
+        </ScrollView>
+      </Container>
     );
   }
 }
