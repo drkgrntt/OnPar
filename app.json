@@ -6,10 +6,10 @@
     "version": "1.0.0",
     "slug": "OnPar",
     "ios": {
-      "bundleIdentifier": "com.derekgarnett"
+      "bundleIdentifier": "com.derekgarnett.onpar"
     },
     "android": {
-      "package": "com.derekgarnett"
+      "package": "com.derekgarnett.onpar"
     }
   }
 }
