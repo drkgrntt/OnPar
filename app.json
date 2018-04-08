@@ -1,6 +1,15 @@
 {
   "expo": {
-    "name": "OnPar",
+    "name": "On Par",
     "sdkVersion": "26.0.0",
+    "description": "A mobile disc golf scorecard",
+    "version": "1.0.0",
+    "slug": "OnPar",
+    "ios": {
+      "bundleIdentifier": "com.derekgarnett"
+    },
+    "android": {
+      "package": "com.derekgarnett"
+    }
   }
 }
