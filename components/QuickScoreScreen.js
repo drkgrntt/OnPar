@@ -13,6 +13,7 @@ class QuickScoreScreen extends Component {
       left: 0,
       right: 0
     },
+    headerTintColor: '#fff',
     headerTitleStyle: {
       color: '#88ab4b',
       textShadowColor: 'black',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, Platform } from 'react-native';
 import _ from 'lodash';
 import Container from './Container';
 import ScoreBoard from './ScoreBoard';
@@ -15,6 +15,7 @@ class ScoreScreen extends Component {
       left: 0,
       right: 0
     },
+    headerTintColor: '#fff',
     headerTitleStyle: {
       color: '#88ab4b',
       textShadowColor: 'black',
@@ -52,7 +53,7 @@ class ScoreScreen extends Component {
 const styles = StyleSheet.create({
   scrollview: {
     width: '100%',
-    marginTop: 24,
+    marginTop: Platform.OS === 'android' ? 24 : 64,
     marginBottom: 17
   }
 });

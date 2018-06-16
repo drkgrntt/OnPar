@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import HomeScreen from './components/HomeScreen';
 import SetupScreen from './components/SetupScreen';
@@ -19,7 +18,9 @@ const RootStack = StackNavigator(
 );
 
 const App = () => {
-  return <RootStack />;
+  return (
+    <RootStack />
+  );
 };
 
 export default App;
