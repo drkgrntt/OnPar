@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 
-const Title = (props) => {
+const Title = props => {
   return (
     <Text style={styles.title}>
       {props.children}
@@ -14,9 +14,9 @@ const styles = StyleSheet.create({
     color: '#88ab4b',
     fontSize: 70,
     fontWeight: 'bold',
-    shadowColor: 'black',
-    shadowOffset: { width: 1, height: 1 },
-    shadowOpacity: 1,
+    textShadowColor: 'black',
+    textShadowOffset: { width: 3, height: 3 },
+    textShadowRadius: 5,
   },
 });
 

@@ -18,11 +18,8 @@ const RootStack = StackNavigator(
   }
 );
 
-
-class App extends React.Component {
-  render() {
-    return <RootStack />;
-  }
-}
+const App = () => {
+  return <RootStack />;
+};
 
 export default App;

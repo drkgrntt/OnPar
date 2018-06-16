@@ -8,28 +8,30 @@ class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Home',
     headerStyle: {
-      backgroundColor: '#69a573'
+      position: 'absolute',
+      backgroundColor: 'transparent',
+      zIndex: 100,
+      top: 0,
+      left: 0,
+      right: 0
     },
     headerTitleStyle: {
+      alignSelf: 'center',
       color: '#88ab4b',
-      shadowColor: 'black',
-      shadowOffset: { width: 1, height: 1 },
-      shadowOpacity: 1,
-      fontSize: 30
+      textShadowColor: 'black',
+      textShadowOffset: { width: 1, height: 1 },
+      textShadowRadius: 5,
+      fontSize: 30,
     }
   }
 
   render() {
     return (
       <Container>
-        <Image 
-          style={{ width: 200, height: 290 }}
-          source={{ uri: 'https://d30y9cdsu7xlg0.cloudfront.net/png/301023-200.png' }}
-        />
-        <Title>- OnPar -</Title>
+        <Title>On Par</Title>
         <Text style={styles.text}>Your mobile disc golf scorecard</Text>
         <Button onPress={() => this.props.navigation.navigate('Setup')}>
-          Set up your game
+          Multiplayer quick start
         </Button>
         <Button onPress={() => this.props.navigation.navigate('QuickScore')}>
           Quick Start

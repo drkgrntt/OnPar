@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import Container from './Container';
+import Title from './Title';
 
 class ScoreBoard extends Component {
   constructor(props) {
@@ -42,15 +42,14 @@ class ScoreBoard extends Component {
     const { player, verb } = this.props;
 
     return (
-      <Container>
-        <View style={styles.hr} />
+      <View style={styles.view}>
         <TouchableOpacity 
           onPress={() => this.addScore()}
         >
           <Text style={styles.button}>+</Text>
         </TouchableOpacity>
         <Text style={styles.text}>{player} {verb}</Text>
-        <Text style={styles.title}>{Math.abs(score)}</Text>
+        <Title>{Math.abs(score)}</Title>
         <Text style={styles.text}>{proximity} par!</Text>
         <TouchableOpacity 
           onPress={() => this.subtractScore()}
@@ -58,7 +57,7 @@ class ScoreBoard extends Component {
           <Text style={styles.button}>-</Text>
         </TouchableOpacity>
         <View style={styles.hr} />
-      </Container>
+      </View>
     );
   }
 }
@@ -75,16 +74,12 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 1,
   },
-  title: {
-    color: '#88ab4b',
-    fontSize: 70,
-    fontWeight: 'bold',
-    shadowColor: 'black',
-    shadowOffset: { width: 1, height: 1 },
-    shadowOpacity: 1,    
+  view: {
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   hr: {
-    borderBottomColor: '#fff',
+    borderBottomColor: '#000',
     borderBottomWidth: 1,
     width: 300,
     height: 5,

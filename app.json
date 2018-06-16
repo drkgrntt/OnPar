@@ -5,6 +5,7 @@
     "description": "A mobile disc golf scorecard",
     "version": "1.0.0",
     "slug": "OnPar",
+    "orientation": "portrait",
     "ios": {
       "bundleIdentifier": "com.derekgarnett.onpar"
     },

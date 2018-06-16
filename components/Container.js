@@ -1,21 +1,27 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet, ImageBackground } from 'react-native';
 
-const Container = (props) => {
+const Container = props => {
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      style={styles.container}
+      source={{ uri: 'https://www.desktopbackground.org/p/2012/06/15/405841_disc-golf-wallpapers_720x960_h.jpg'}}
+    >
       {props.children}
-    </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#89b485',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
+    flex: 1,
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 });
 
 export default Container;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import _ from 'lodash';
 import Container from './Container';
 import ScoreBoard from './ScoreBoard';
@@ -8,14 +8,18 @@ class ScoreScreen extends Component {
   static navigationOptions = {
     title: 'Scores',
     headerStyle: {
-      backgroundColor: '#69a573'
+      position: 'absolute',
+      backgroundColor: 'transparent',
+      zIndex: 100,
+      top: 0,
+      left: 0,
+      right: 0
     },
-    headerTintColor: '#fff',
     headerTitleStyle: {
       color: '#88ab4b',
-      shadowColor: 'black',
-      shadowOffset: { width: 1, height: 1 },
-      shadowOpacity: 1,
+      textShadowColor: 'black',
+      textShadowOffset: { width: 1, height: 1 },
+      textShadowRadius: 5,
       fontSize: 30
     }
   }
@@ -37,14 +41,20 @@ class ScoreScreen extends Component {
   render() {
     return (
       <Container>
-        <ScrollView>
-          <Container>
-            {this.renderScoreBoards()}
-          </Container>
+        <ScrollView style={styles.scrollview}>
+          {this.renderScoreBoards()}
         </ScrollView>
       </Container>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  scrollview: {
+    width: '100%',
+    marginTop: 24,
+    marginBottom: 17
+  }
+});
 
 export default ScoreScreen;

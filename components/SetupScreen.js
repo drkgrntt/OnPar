@@ -15,14 +15,18 @@ class SetupScreen extends React.Component {
   static navigationOptions = {
     title: 'Setup',
     headerStyle: {
-      backgroundColor: '#69a573'
+      position: 'absolute',
+      backgroundColor: 'transparent',
+      zIndex: 100,
+      top: 0,
+      left: 0,
+      right: 0
     },
-    headerTintColor: '#fff',
     headerTitleStyle: {
       color: '#88ab4b',
-      shadowColor: 'black',
-      shadowOffset: { width: 1, height: 1 },
-      shadowOpacity: 1,
+      textShadowColor: 'black',
+      textShadowOffset: { width: 1, height: 1 },
+      textShadowRadius: 5,
       fontSize: 30
     }
   }
@@ -89,7 +93,7 @@ class SetupScreen extends React.Component {
 const styles = StyleSheet.create({
   error: {
     color: '#f00',
-    fontSize: 15,
+    fontSize: 20,
     fontStyle: 'italic'
   },
   text: {
