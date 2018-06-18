@@ -1,15 +1,17 @@
 import React from 'react';
 import _ from 'lodash';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
+import { connect } from 'react-redux';
 import Button from './Button';
 import Container from './Container';
 import Title from './Title';
+import * as actions from '../actions';
 
 class SetupScreen extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { error: '', text: '', players: [] }
+    this.state = { error: '', text: '' };
   }
 
   static navigationOptions = {
@@ -33,17 +35,19 @@ class SetupScreen extends React.Component {
   }
 
   addPlayer() {
-    this.setState(state => {
-      if (state.text === '') {
-        return { error: 'Enter a name!' }
-      }
-
-      return { error: '', text: '', players: [...state.players, state.text] }
-    });
+    if (this.state.text === '') {
+      return this.setState({ error: 'Enter a name!' });
+    } else {
+      this.props.addPlayer(this.state.text);
+      this.setState({ error: '', text: '' });
+    }
   }
 
   renderPlayers() {
-    const { players } = this.state;
+    let players = [];
+    _.map(this.props.scoreState.scoreCards, scoreCard => {
+      players.push(scoreCard.player);
+    });
 
     if (!players[0]) {
       return;
@@ -55,15 +59,11 @@ class SetupScreen extends React.Component {
   }
 
   startGame() {
-    const { players } = this.state;
-
-    if (!players[0]) {
+    if (!this.props.scoreState.scoreCards[0]) {
       return this.setState({ error: 'Enter some players!' });
     }
 
-    return this.props.navigation.navigate('Score', {
-      players: this.state.players
-    });
+    return this.props.navigation.navigate('Score');
   }
 
   render() {
@@ -71,7 +71,7 @@ class SetupScreen extends React.Component {
       <Container>
         <Title>Setup</Title>
         <Text style={styles.text}>Who's playing?</Text>
-        <TextInput 
+        <TextInput
           style={styles.input}
           onChangeText={(text) => this.setState({ text })}
           value={this.state.text}
@@ -114,4 +114,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SetupScreen;
+const mapStateToProps = state => {
+  return { scoreState: state.score };
+};
+
+export default connect(mapStateToProps, actions)(SetupScreen);

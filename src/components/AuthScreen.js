@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import Title from './Title';
 import Container from './Container';
-import ScoreBoard from './ScoreBoard';
 
-class QuickScoreScreen extends Component {
+class AuthScreen extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { error: '', username: '', password: '' };
+  }
+
   static navigationOptions = {
-    title: 'QuickScore',
+    title: 'Sign In',
     headerStyle: {
       position: 'absolute',
       backgroundColor: 'transparent',
@@ -26,13 +32,10 @@ class QuickScoreScreen extends Component {
   render() {
     return (
       <Container>
-        <ScoreBoard 
-          player="You"
-          verb="are"
-        />
+        <Title>AUTHENTICATION</Title>
       </Container>
     );
   }
 }
 
-export default QuickScoreScreen;
+export default AuthScreen;

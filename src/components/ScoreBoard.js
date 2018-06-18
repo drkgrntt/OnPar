@@ -1,50 +1,19 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
 import Title from './Title';
+import * as actions from '../actions';
 
 class ScoreBoard extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { score: 0, proximity: 'on' }
-  }
-
-  addScore() {
-    this.setState(prevState => {
-      const newScore = prevState.score + 1;
-
-      if (newScore > 0) {
-        return { score: newScore, proximity: 'over' }
-      } else if (newScore < 0) {
-        return { score: newScore, proximity: 'under' }
-      } else {
-        return { score: newScore, proximity: 'on' }
-      }
-    });
-  }
-
-  subtractScore() {
-    this.setState(prevState => {
-      const newScore = prevState.score - 1;
-
-      if (newScore > 0) {
-        return { score: newScore, proximity: 'over' }
-      } else if (newScore < 0) {
-        return { score: newScore, proximity: 'under' }
-      } else {
-        return { score: newScore, proximity: 'on' }
-      }
-    });
-  }
-
   render() {
-    const { score, proximity } = this.state;
-    const { player, verb } = this.props;
+    // ex:  "You"  "are"   "3"    "under"
+    // ex: "Derek"  "is"   "5"    "over"
+    const { player, verb, score, proximity, addScore, subtractScore } = this.props;
 
     return (
       <View style={styles.view}>
         <TouchableOpacity 
-          onPress={() => this.addScore()}
+          onPress={() => addScore(score, player)}
         >
           <Text style={styles.button}>+</Text>
         </TouchableOpacity>
@@ -52,7 +21,7 @@ class ScoreBoard extends Component {
         <Title>{Math.abs(score)}</Title>
         <Text style={styles.text}>{proximity} par!</Text>
         <TouchableOpacity 
-          onPress={() => this.subtractScore()}
+          onPress={() => subtractScore(score, player)}
         >
           <Text style={styles.button}>-</Text>
         </TouchableOpacity>
@@ -87,4 +56,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ScoreBoard;
+export default connect(null, actions)(ScoreBoard);
