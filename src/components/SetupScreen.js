@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   input: {
-    height: 35,
+    height: 40,
     width: 300,
     borderColor: '#222',
     borderWidth: 1,

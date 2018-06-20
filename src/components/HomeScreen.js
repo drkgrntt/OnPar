@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Image, StyleSheet } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import Button from './Button';
 import Container from './Container';
@@ -7,13 +7,30 @@ import Title from './Title';
 import * as actions from '../actions';
 
 class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Home'
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Home',
+      headerRight: (
+        <TouchableOpacity
+          onPress={navigation.getParam('login')}
+        >
+          <Text style={{ color: '#fff', fontSize: 20, marginRight: 20 }}>Login</Text>
+        </TouchableOpacity>
+      )
+    };
+  };
+
+  componentDidMount() {
+    this.props.navigation.setParams({ login: this.login });
+  }
+
+  login = () => {
+    this.props.navigation.navigate('Auth');
   }
 
   render() {
     const { resetScoreState, addPlayer, navigation } = this.props;
-    
+
     return (
       <Container>
         <Title>On Par</Title>
@@ -31,9 +48,6 @@ class HomeScreen extends React.Component {
         }}>
           Multiplayer Quick Start
         </Button>
-        {/* <Button onPress={() => this.props.navigation.navigate('Auth')}>
-          Sign In
-        </Button> */}
       </Container>
     );
   }
